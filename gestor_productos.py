@@ -41,35 +41,41 @@ def ver_productos():
         print("Productos disponibles:")
         for producto in productos:
             print(f"Nombre: {producto['nombre']}, Precio: {producto['precio']}, Cantidad: {producto['cantidad']}")
-
 def actualizar_producto():
-    nombre = input("Introduce el nombre del producto a actualizar: ")
+    nombre = input("Introduce el nombre del producto a actualizar: ").strip().lower()  # Convertir a minúsculas y quitar espacios
     for producto in productos:
-        if producto['nombre'] == nombre:
-            nuevo_nombre = input("Introduce el nuevo nombre (dejar en blanco para no cambiar): ")
+        if producto['nombre'].lower() == nombre:  # Comparar en minúsculas
+            nuevo_nombre = input("Introduce el nuevo nombre (dejar en blanco para no cambiar): ").strip()
             if nuevo_nombre:
                 producto['nombre'] = nuevo_nombre
             
-            nuevo_precio = input("Introduce el nuevo precio (dejar en blanco para no cambiar): ")
+            nuevo_precio = input("Introduce el nuevo precio (dejar en blanco para no cambiar): ").strip()
             if nuevo_precio:
                 producto['precio'] = float(nuevo_precio)
             
-            nueva_cantidad = input("Introduce la nueva cantidad (dejar en blanco para no cambiar): ")
+            nueva_cantidad = input("Introduce la nueva cantidad (dejar en blanco para no cambiar): ").strip()
             if nueva_cantidad:
                 producto['cantidad'] = int(nueva_cantidad)
             
             print("Producto actualizado con éxito.")
+            
+            # Guardar los cambios en el archivo
+            guardar_datos()
             return
     print("Producto no encontrado.")
 
 def eliminar_producto():
-    nombre = input("Introduce el nombre del producto a eliminar: ")
+    nombre = input("Introduce el nombre del producto a eliminar: ").strip().lower()  # Convertir a minúsculas y quitar espacios
     for producto in productos:
-        if producto['nombre'] == nombre:
+        if producto['nombre'].lower() == nombre:  # Comparar en minúsculas
             productos.remove(producto)
             print(f"Producto '{nombre}' eliminado con éxito.")
+            
+            # Guardar los cambios en el archivo
+            guardar_datos()
             return
     print("Producto no encontrado.")
+
 
 def menu():
     cargar_datos()  # Cargar datos al iniciar el programa
