@@ -21,16 +21,18 @@ def guardar_datos():
             archivo.write(f"{producto['nombre']},{producto['precio']},{producto['cantidad']}\n")
 
 def añadir_producto():
-    nombre = input("Introduce el nombre del producto: ")
-    precio = float(input("Introduce el precio del producto: "))
-    cantidad = int(input("Introduce la cantidad disponible: "))
-    
-    productos.append({
-        'nombre': nombre,
-        'precio': precio,
-        'cantidad': cantidad
-    })
-    print(f"Producto '{nombre}' añadido con éxito.")
+    nombre = input("Por favor, ingrese el nombre del producto: ")
+    try:
+        precio = float(input("Introduce el precio del producto: ").replace('.', ''))
+        cantidad = int(input("Introduce la cantidad del producto: "))
+        productos.append({
+            'nombre': nombre,
+            'precio': precio,
+            'cantidad': cantidad
+        })
+        print(f"Producto '{nombre}' añadido con éxito.")
+    except ValueError:
+        print("Error: Introduce un número válido para el precio y la cantidad.")
 
 def ver_productos():
     if not productos:
