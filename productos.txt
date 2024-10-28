@@ -1,0 +1,10 @@
+Laptop,800.000,10
+Mouse,45.000,50
+Teclado,60.000,30
+Monitor,1.000.000,20
+Auriculares,35.500,40
+Impresora,1.500.000,15
+Cámara,800.000,8
+Smartphone,1.700.000,25
+Tablet,900.000,12
+Disco Duro,150.000,35
